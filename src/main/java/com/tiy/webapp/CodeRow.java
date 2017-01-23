@@ -13,6 +13,10 @@ public class CodeRow {
     private static boolean duplicateColorsAllowed = false;
     private Color[] colors;
 
+    public CodeRow () {
+
+    }
+
     public CodeRow (Random random, int size) {
         colors = new Color[size];
         int numColors = Color.values().length;
@@ -22,6 +26,10 @@ public class CodeRow {
                 colors[index] = Color.values()[rand];
             }
         } else {
+            if (size > numColors) {
+                throw new AssertionError("Cannot produce a unique combination of size *"
+                        + size + "* with only *" + numColors + "* colors to work with.");
+            }
             boolean[] colorUsed = new boolean[Color.values().length];
             Arrays.fill(colorUsed, false);
             for (int index = 0; index < size; index++) {
@@ -50,6 +58,7 @@ public class CodeRow {
     public static CompareResult compareTwoRows (CodeRow secret, CodeRow guess) {
         int colorsRight = 0;
         int spotsRight = 0;
+        System.out.println("Guess = " + guess);
         if (secret.getColors().length != guess.getColors().length) {
             throw new AssertionError("Cannot compare rows if they don't match in size");
         }
@@ -66,16 +75,6 @@ public class CodeRow {
                 noSpotMatchSecretColors.add(secretColors[index]);
             }
         }
-        /*int loopTimes = 0;
-        for (Color color : noSpotMatchGuessColors) {
-            loopTimes++;
-            System.out.println("looptimes = " + loopTimes);
-            if (noSpotMatchSecretColors.contains(color)) {
-                colorsRight++;
-                noSpotMatchGuessColors.remove(color);
-                noSpotMatchSecretColors.remove(color);
-            }
-        }*/
 
         for (int index = 0; index < noSpotMatchGuessColors.size(); index++) {
             Color color = noSpotMatchGuessColors.get(index);
@@ -108,5 +107,9 @@ public class CodeRow {
             response += " " + color;
         }
         return response;
+    }
+
+    public void setColors(Color[] colors) {
+        this.colors = colors;
     }
 }

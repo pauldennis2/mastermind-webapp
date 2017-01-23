@@ -1,3 +1,7 @@
+package com.tiy.webapp;
+
+import jodd.json.JsonParser;
+import jodd.json.JsonSerializer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +47,6 @@ public class CodeRowTest {
     @Test
     public void testRandomBoard () {
         Random random = new Random();
-
         System.out.println("No duplicates allowed:");
         CodeRow.setDuplicateColorsAllowed(false);
         for (int index = 0; index < 10; index++) {
@@ -55,7 +58,26 @@ public class CodeRowTest {
                 assertTrue(colors.add(color));
             }
         }
-
     }
+
+    @Test
+    public void testCodeRowJsonSerialization () {
+        CodeRow test = new CodeRow(new Random(), 4);
+        JsonSerializer jsonSerializer = new JsonSerializer().deep(true);
+        String jsonString = jsonSerializer.serialize(test);
+        System.out.println(jsonString);
+    }
+
+    /*public String jsonSave () {
+        JsonSerializer jsonSerializer = new JsonSerializer().deep(true);
+        String jsonString = jsonSerializer.serialize(this);
+        return jsonString;
+    }
+
+    public static PaintRecord jsonRestore(String jsonString) {
+        JsonParser listParser = new JsonParser();
+        PaintRecord record = listParser.parse(jsonString, PaintRecord.class);
+        return record;
+    }*/
 
 }

@@ -1,3 +1,5 @@
+package com.tiy.webapp;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +23,6 @@ public class BoardTest {
     public void tearDown() throws Exception {
 
     }
-
 
     @Test
     public void testBoard () {

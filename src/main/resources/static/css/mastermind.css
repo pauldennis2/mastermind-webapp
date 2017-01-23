@@ -1,0 +1,32 @@
+.peg {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    margin: 5px;
+    padding: 5px;
+    float: left;
+}
+
+.blank {
+    border-style: dashed;
+    border-width: 2px;
+}
+
+.Orange {
+    background-color: orange;
+}
+.Blue {
+    background-color: blue;
+}
+.Yellow {
+    background-color: yellow;
+}
+.Purple {
+    background-color: darkorchid;
+}
+.Red {
+    background-color: red;
+}
+.Green {
+    background-color: green;
+}
