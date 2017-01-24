@@ -1,11 +1,7 @@
 angular.module('TIYAngularApp', [])
-   .controller('SampleController', function($scope, $http) {
-        var numColors = 6;
+   .controller('GameController', function($scope, $http) {
 
-        $scope.numGuesses = 10;
-
-        console.log("Sample controller running");
-        $scope.getBoard = function() {
+        getBoard = function() {
             console.log("Getting data");
 
             $http.get("/board.json")
@@ -14,40 +10,43 @@ angular.module('TIYAngularApp', [])
                         console.log(response.data);
                         console.log("Adding data to scope");
                         $scope.guesses = response.data;
+                        for (i = 0; i < resultsIndex; i++) {
+                            $scope.guessIndexArray[i] = i;
+                        }
                     },
                     function errorCallback(response) {
                         console.log("Unable to get data");
                     });
         };
 
+        getSettings = function() {
+            console.log("Getting settings");
 
-        $scope.newMove = {};
-        $scope.userGuess = [];
-        $scope.userRequestContainer = {};
-        $scope.userGuessArray = [];
-        $scope.settings = {};
+            $http.get("/get-settings.json")
+                .then(
+                    function successCallback(response) {
+                        console.log(response.data);
+                        console.log("Adding data to scope");
+                        $scope.settings = response.data;
+                        for (i = 0; i < $scope.settings.boardWidth; i++) {
+                            console.log("index = " + i);
+                            $scope.testArray[i] = i;
+                        }
+                    },
+                    function errorCallback(response) {
+                        console.log("Unable to get data =(");
+                    });
+        }
 
-        $scope.colorArray = [];
-        var colorArrayIndex = 0;
-        $scope.results = [];
-        var resultsIndex = 0;
-        var duplesAllowed = false;
-
-        $scope.saveSettings = function() {
-
-        };
-
-
-        $scope.simpleSubmit = function() {
-            if (resultsIndex < $scope.numGuesses) {
-                console.log("About to submit the following move (simple): " + JSON.stringify($scope.newMove));
-                $scope.colorArray[colorArrayIndex] = {};
-                $scope.colorArray[colorArrayIndex].color1 = "peg " + $scope.newMove.first;
-                $scope.colorArray[colorArrayIndex].color2 = "peg " + $scope.newMove.second;
-                $scope.colorArray[colorArrayIndex].color3 = "peg " + $scope.newMove.third;
-                $scope.colorArray[colorArrayIndex].color4 = "peg " + $scope.newMove.fourth;
+        $scope.submitMove = function() {
+            if (resultsIndex < $scope.settings.numGuesses) {
+                console.log("About to submit the following move: " + JSON.stringify($scope.newMove));
+                $scope.colorArray[colorArrayIndex] = [];
+                for (i = 0; i < $scope.settings.boardWidth; i++) {
+                    $scope.colorArray[colorArrayIndex][i] = "peg " + $scope.newMove[i];
+                }
                 colorArrayIndex++;
-                $http.post("/simple-submit.json", $scope.newMove)
+                $http.post("/submit-move.json", $scope.newMove)//Here is our problem (interaction with MRC line 34
                     .then(
                         function successCallback(response) {
                             console.log(response.data);
@@ -55,20 +54,52 @@ angular.module('TIYAngularApp', [])
                             //$scope.board = response.data;
                             $scope.results[resultsIndex] = {};
                             $scope.results[resultsIndex] = response.data;
-                            if (response.data.spotsRight == 4) {
+                            if (response.data.spotsRight == $scope.settings.boardWidth) {
                                 alert("You correctly guessed the pattern. You win!");
                             }
                             resultsIndex++;
-                            $scope.getBoard();
+                            getBoard();
                         },
                         function errorCallback(response) {
                             console.log("Unable to get data");
                         });
-
-            }
+             }
 
              else {
-                alert("You have exceeded your limit of " + $scope.numGuesses + " guesses. (You lost)");
+                alert("You have exceeded your limit of " + $scope.settings.numGuesses + " guesses. (You lost)");
              }
         };
+
+        var colorArrayIndex = 0;
+        var resultsIndex = 0;
+
+
+
+        console.log("*************** Initializing AngularJS Controller ***************");
+        //$scope.newMove = {};
+        $scope.newMove = [];
+        $scope.userGuess = [];
+        $scope.userRequestContainer = {};
+        $scope.userGuessArray = [];
+        $scope.settings = {};
+        $scope.colorArray = [];
+        $scope.results = [];
+        $scope.testArray = [];
+        $scope.guessIndexArray = [];
+
+        getSettings();
+    })
+    .controller('ConfigController', function($scope, $http) {
+        $scope.saveSettings = function() {
+            console.log("Saving settings");
+            $http.post("save-settings.json", $scope.settings)
+                .then(
+                    function successCallback(response) {
+                        console.log("Successfully saved settings");
+                    },
+                    function errorCallback(response) {
+                        console.log("Some kind of error. Sadface");
+                    });
+        };
+        $scope.settings = {};
     });

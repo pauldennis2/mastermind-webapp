@@ -10,16 +10,15 @@ import java.util.Random;
  */
 public class CodeRow {
 
-    private static boolean duplicateColorsAllowed = false;
     private Color[] colors;
 
     public CodeRow () {
 
     }
 
-    public CodeRow (Random random, int size) {
+    public CodeRow (Random random, int size, boolean duplicateColorsAllowed, int numColors) {
         colors = new Color[size];
-        int numColors = Color.values().length;
+        //int numColors = Color.values().length;
         if (duplicateColorsAllowed) {
             for (int index = 0; index < size; index++) {
                 int rand = random.nextInt(numColors);
@@ -86,14 +85,6 @@ public class CodeRow {
             }
         }
         return new CompareResult(colorsRight, spotsRight);
-    }
-
-    public static boolean duplicateColorsAllowed() {
-        return duplicateColorsAllowed;
-    }
-
-    public static void setDuplicateColorsAllowed(boolean duplicateColorsAllowed) {
-        CodeRow.duplicateColorsAllowed = duplicateColorsAllowed;
     }
 
     public int getSize () {

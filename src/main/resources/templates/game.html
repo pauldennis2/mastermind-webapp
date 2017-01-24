@@ -7,29 +7,17 @@
     <title>Mastermind Game</title>
     <link rel="stylesheet" type="text/css" href="../css/mastermind.css">
 </head>
-<body ng-controller="SampleController">
+<body ng-controller="GameController">
 {{! changing the mustache delimiter so it doesn't conflict with  }}
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
 <a href = /config>Config</a><br>
-Number of Guesses Allowed: {{numGuesses}}<br>
-<input type="button" ng-click="simpleSubmit()" value="Submit Move" ng-model="newMove">
-    <select ng-model="newMove.first">
-        <%#color-list%>
-            <option><%name%></option>
-        <%/color-list%>
-    </select>
-    <select ng-model="newMove.second">
-        <%#color-list%>
-            <option><%name%></option>
-        <%/color-list%>
-    </select>
-    <select ng-model="newMove.third">
-        <%#color-list%>
-            <option><%name%></option>
-        <%/color-list%>
-    </select>
-    <select ng-model="newMove.fourth">
+Number of Guesses Allowed: {{settings.numGuesses}}<br>
+Number of Colors Possible: {{settings.numColors}}<br>
+Duples Allowed: {{settings.duplesAllowed}}<br>
+Board Width: {{settings.boardWidth}}<br>
+<input type="button" ng-click="submitMove()" value="Submit Move" ng-model="newMove">
+    <select ng-repeat="y in testArray" ng-model="newMove[$index]">
         <%#color-list%>
             <option><%name%></option>
         <%/color-list%>
@@ -38,16 +26,12 @@ Number of Guesses Allowed: {{numGuesses}}<br>
 
 <hr>
 Board:
-<div ng-repeat="row in guesses">
-    <div class={{colorArray[$index].color1}}></div>
-    <div class={{colorArray[$index].color2}}></div>
-    <div class={{colorArray[$index].color3}}></div>
-    <div class={{colorArray[$index].color4}}></div>
+<div ng-repeat="x in guessIndexArray">
+    <div ng-repeat="y in testArray" class={{colorArray[x][y]}}></div>
     Right Color, Wrong Spot: {{results[$index].colorsRight}}
     <br>
     Right Color, Right Spot: {{results[$index].spotsRight}}
     <br><br>
 </div>
-
 </body>
 </html>

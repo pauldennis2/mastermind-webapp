@@ -48,9 +48,8 @@ public class CodeRowTest {
     public void testRandomBoard () {
         Random random = new Random();
         System.out.println("No duplicates allowed:");
-        CodeRow.setDuplicateColorsAllowed(false);
         for (int index = 0; index < 10; index++) {
-            CodeRow codeRow = new CodeRow(random, 4);
+            CodeRow codeRow = new CodeRow(random, 4, false, 6);
             System.out.println(codeRow);
             Set<Color> colors = new HashSet<>();
             for (Color color : codeRow.getColors()) {
@@ -62,7 +61,7 @@ public class CodeRowTest {
 
     @Test
     public void testCodeRowJsonSerialization () {
-        CodeRow test = new CodeRow(new Random(), 4);
+        CodeRow test = new CodeRow(new Random(), 4, false, 6);
         JsonSerializer jsonSerializer = new JsonSerializer().deep(true);
         String jsonString = jsonSerializer.serialize(test);
         System.out.println(jsonString);
