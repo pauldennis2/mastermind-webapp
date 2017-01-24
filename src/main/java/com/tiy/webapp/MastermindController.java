@@ -45,4 +45,9 @@ public class MastermindController {
         model.addAttribute("size-list", sizeList);
         return "game";
     }
+
+    @RequestMapping(path= "/config", method = RequestMethod.GET)
+    public String config () {
+        return "config";
+    }
 }

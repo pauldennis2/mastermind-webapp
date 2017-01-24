@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="TIYAngularApp">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/tiy-ng-controller.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Mastermind Config/New Game</title>
+    <link rel="stylesheet" type="text/css" href="../css/config.css">
+</head>
+<body ng-controller="SampleController">
+<h3>Mastermind Settings</h3><br>
+Allow duplicate colors?<br>
+Off
+
+<label class="switch">
+    <input type="checkbox" ng-model="settings.duplesAllowed">
+    <div class="slider round"></div>
+</label>
+On
+<br>
+Max number of guesses:
+<input type="number" placeholder="10" width="100px" min="3" max="20" ng-model="settings.numGuesses">
+<br>
+Number of colors:
+<input type="number" placeholder="6" width="100px" min="2" max="6" ng-model="settings.numColors">
+<input type="button" value="Save Settings" ng-click="saveSettings()" ng-model="settings">
+</body>
+</html>

@@ -11,8 +11,8 @@
 {{! changing the mustache delimiter so it doesn't conflict with  }}
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
-<button ng-click="getBoard()">Board</button>
-
+<a href = /config>Config</a><br>
+Number of Guesses Allowed: {{numGuesses}}<br>
 <input type="button" ng-click="simpleSubmit()" value="Submit Move" ng-model="newMove">
     <select ng-model="newMove.first">
         <%#color-list%>
