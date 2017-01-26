@@ -35,6 +35,9 @@ public class MastermindController {
             settings = SettingsContainer.getDefaultSettings();
             session.setAttribute("settings", settings);
         }
+        if(!initialized) {
+            initialize();
+        }
         int numColors = settings.getNumColors();
         if (numColors != colorNames.size()) {
             int index = 0;
@@ -49,9 +52,7 @@ public class MastermindController {
             }
         }
         model.addAttribute("color-list", colorNames);
-        if(!initialized) {
-            initialize();
-        }
+
         return "game";
     }
 

@@ -45,6 +45,31 @@ public class CodeRowTest {
     }
 
     @Test
+    public void testDuplesInGuessNoDuplesInSecret() {
+        CodeRow secret = new CodeRow(new Color[]{Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW});
+        CodeRow guess = new CodeRow(new Color[]{Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.YELLOW});
+        CompareResult result = CodeRow.compareTwoRows(secret, guess);
+        assertEquals(1, result.getSpotsRight());
+        assertEquals(0, result.getColorsRight());
+        guess = new CodeRow(new Color[]{Color.RED, Color.RED, Color.BLUE, Color.BLUE});
+        result = CodeRow.compareTwoRows(secret, guess);
+        assertEquals(0, result.getSpotsRight());
+        assertEquals(2, result.getColorsRight());
+        //make sure order doesn't matter
+        result = CodeRow.compareTwoRows(guess, secret);
+        assertEquals(0, result.getSpotsRight());
+        assertEquals(2, result.getColorsRight());
+        guess = new CodeRow(new Color[]{Color.BLUE, Color.BLUE, Color.RED, Color.YELLOW});
+        result = CodeRow.compareTwoRows(secret, guess);
+        assertEquals(3, result.getSpotsRight());
+        assertEquals(0, result.getColorsRight());
+        result = CodeRow.compareTwoRows(guess, secret);
+
+        assertEquals(3, result.getSpotsRight());
+        assertEquals(0, result.getColorsRight());
+    }
+
+    @Test
     public void testRandomBoard () {
         Random random = new Random();
         System.out.println("No duplicates allowed:");

@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="TIYAngularApp">
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="js/tiy-ng-controller.js"></script>
+
 <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src="js/angular-drop.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/tiy-ng-controller.js"></script>
     <meta charset="UTF-8">
     <title>Mastermind Game</title>
     <link rel="stylesheet" type="text/css" href="../css/mastermind.css">
@@ -25,9 +31,30 @@ Board Width: {{settings.boardWidth}}<br>
 </input>
 
 <hr>
+Menu:
+<div>
+    <div class="peg Red" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div class="peg Orange" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div class="peg Yellow" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div class="peg Green" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div class="peg Blue" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div class="peg Purple" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+</div>
+<br><br>
+<div>
+    <div id="firstBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'firstSpotOnDrop'}"></div>
+    <div id="secondBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'secondSpotOnDrop'}"></div>
+    <div id="thirdBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'thirdSpotOnDrop'}"></div>
+    <div id="fourthBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'fourthSpotOnDrop'}"></div>
+    <input type="button" ng-click="submitDragDropMove()" value="Submit Dragdrop"/>
+</div>
+<br><br>
+<hr>
 Board:
 <div ng-repeat="x in guessIndexArray">
     <div ng-repeat="y in testArray" class={{colorArray[x][y]}}></div>
+    <div ng-repeat="y in grayPinsArray[x]" class="pin Gray"></div>
+    <div ng-repeat="y in blackPinsArray[x]" class="pin Black"></div>
     Right Color, Wrong Spot: {{results[$index].colorsRight}}
     <br>
     Right Color, Right Spot: {{results[$index].spotsRight}}

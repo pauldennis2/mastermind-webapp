@@ -7,6 +7,15 @@
     float: left;
 }
 
+.pin {
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    margin: 5px;
+    padding: 5px;
+    float: left;
+}
+
 .blank {
     border-style: dashed;
     border-width: 2px;
@@ -30,3 +39,21 @@
 .Green {
     background-color: green;
 }
+.Gray {
+    background-color: lightgray;
+}
+.Black {
+    background-color: black;
+}
+.thumbnail {
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        padding-top: 0px;
+        transition: none;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        cursor: pointer;
+        background: rgb(182, 173, 123);
+      }
