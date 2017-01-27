@@ -22,17 +22,11 @@ Number of Guesses Allowed: {{settings.numGuesses}}<br>
 Number of Colors Possible: {{settings.numColors}}<br>
 Duples Allowed: {{settings.duplesAllowed}}<br>
 Board Width: {{settings.boardWidth}}<br>
-<input type="button" ng-click="submitMove()" value="Submit Move" ng-model="newMove">
-    <select ng-repeat="y in testArray" ng-model="newMove[$index]">
-        <%#color-list%>
-            <option><%name%></option>
-        <%/color-list%>
-    </select>
-</input>
 
 <hr>
-Menu:
+
 <div>
+    Menu:<br>
     <div class="peg Red" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
     <div class="peg Orange" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
     <div class="peg Yellow" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
@@ -40,15 +34,17 @@ Menu:
     <div class="peg Blue" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
     <div class="peg Purple" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
 </div>
-<br><br>
-<div>
-    <div id="firstBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'firstSpotOnDrop'}"></div>
-    <div id="secondBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'secondSpotOnDrop'}"></div>
-    <div id="thirdBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'thirdSpotOnDrop'}"></div>
-    <div id="fourthBlank" class="peg blank" data-drop="true" jqyoui-droppable="{onDrop: 'fourthSpotOnDrop'}"></div>
-    <input type="button" ng-click="submitDragDropMove()" value="Submit Dragdrop"/>
+<br>
+<br>
+<hr>
+<div ng-model="dynamicBlanks">
+    <div ng-repeat="y in dynamicBlanks">
+        <div id="blank{{y}}" class = "peg blank"  data-drop="true" jqyoui-droppable="{onDrop: 'testDrop'}"></div>
+    </div>
+    <br><br><br>
+    <input type="button" ng-click="submitDynamicDragDrop()" value="Submit Move"/>
 </div>
-<br><br>
+
 <hr>
 Board:
 <div ng-repeat="x in guessIndexArray">

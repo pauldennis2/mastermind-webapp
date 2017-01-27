@@ -59,7 +59,8 @@ public class CodeRow {
         int spotsRight = 0;
         System.out.println("Guess = " + guess);
         if (secret.getColors().length != guess.getColors().length) {
-            throw new AssertionError("Cannot compare rows if they don't match in size");
+            throw new AssertionError("Cannot compare rows if they don't match in size." +
+            "Secret length = *" + secret.getColors().length + "* Guess length = *" + guess.getColors().length + "*");
         }
         Color[] secretColors = secret.getColors();
         Color[] guessColors = guess.getColors();
