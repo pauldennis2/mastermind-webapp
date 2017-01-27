@@ -61,6 +61,11 @@ public class MastermindController {
         return "config";
     }
 
+    @RequestMapping(path = "/help", method = RequestMethod.GET)
+    public String help () {
+        return "help";
+    }
+
     public void initialize () {
         colors = new ArrayList<>();
         colorNames = new ArrayList<>();

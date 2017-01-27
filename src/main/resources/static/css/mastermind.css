@@ -16,6 +16,14 @@
     float: left;
 }
 
+.pin_example {
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    margin: 5px;
+    padding: 5px;
+}
+
 .blank {
     border-style: dashed;
     border-width: 2px;

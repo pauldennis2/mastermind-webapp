@@ -11,8 +11,8 @@
     <title>Mastermind Config</title>
     <link rel="stylesheet" type="text/css" href="../css/config.css">
 </head>
-<a href="/">Return to Mastermind</a> (Fresh game)<br>
 <body ng-controller="ConfigController">
+<a href="/">Return to Mastermind</a> (Fresh game)<br>
 <h3>Mastermind Settings</h3><br>
 Allow duplicate colors?<br>
 Off
@@ -23,14 +23,15 @@ Off
 </label>
 On
 <br>
+Defs
 Max number of guesses:
-<input type="number" placeholder="10" width="100px" min="3" max="20" ng-model="settings.numGuesses">
+<input type="number" value="10" width="100px" min="3" max="20" ng-model="settings.numGuesses">
 <br>
 Number of colors:
-<input type="number" placeholder="6" width="100px" min="2" max="6" ng-model="settings.numColors">
+<input type="number" value="6" width="100px" min="2" max="6" ng-model="settings.numColors">
 <br>
 Number of pegs in a row:
-<input type="number" placeholder="4" width="100px" min="2" max="8" ng-model="settings.boardWidth">
+<input type="number" value="4" width="100px" min="2" max="8" ng-model="settings.boardWidth">
 <br>
 <input type="button" value="Save Settings" ng-click="saveSettings()" ng-model="settings">
 </body>

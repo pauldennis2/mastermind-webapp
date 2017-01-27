@@ -139,6 +139,11 @@ angular.module('TIYAngularApp', ['ngDragDrop', 'ui.bootstrap'])
                         console.log("Some kind of error. Sadface");
                     });
         };
+
         $scope.settings = {};
+        $scope.settings.numColors = 6;
+        $scope.settings.numGuesses = 10;
+        $scope.settings.boardWidth = 4;
+        console.log("ConfigController up and running.")
     });
 

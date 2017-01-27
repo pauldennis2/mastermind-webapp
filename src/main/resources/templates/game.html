@@ -17,7 +17,7 @@
 {{! changing the mustache delimiter so it doesn't conflict with  }}
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
-<a href = /config>Config</a><br>
+<a href = /config>Config</a> | <a href = /help>Help</a> | Version 0.0.2<br>
 Number of Guesses Allowed: {{settings.numGuesses}}<br>
 Number of Colors Possible: {{settings.numColors}}<br>
 Duples Allowed: {{settings.duplesAllowed}}<br>
@@ -37,6 +37,7 @@ Board Width: {{settings.boardWidth}}<br>
 <br>
 <br>
 <hr>
+Note: all spaces must be entered (no spaces can be blank).
 <div ng-model="dynamicBlanks">
     <div ng-repeat="y in dynamicBlanks">
         <div id="blank{{y}}" class = "peg blank"  data-drop="true" jqyoui-droppable="{onDrop: 'testDrop'}"></div>

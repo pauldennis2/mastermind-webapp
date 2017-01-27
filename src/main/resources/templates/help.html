@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mastermind Help</title>
+    <link rel="stylesheet" type="text/css" href="../css/mastermind.css">
+</head>
+<body>
+Welcome to Mastermind Help! <a href="/">Return to Game</a><br><br>
+Mastermind is a "code-breaking" game. One player (in this case the computer) comes up with a secret "code" - a row
+of colored pegs. The other player (that's you) tries to guess the combination. After each guess, the computer will give
+you hints about how close you are to the correct combination. Specifically:
+<ul>
+    <li>For each colored peg in the guess that exactly matches the secret code, you will get one black pin.
+        <div class="pin_example Black"></div></li>
+    <li>For the other pegs, you will get one gray pin for each color match.
+        <div class="pin_example Gray"></div></li>
+</ul>
+Let's look at an example.<br>
+Secret: Red - Yellow - Blue - Green <i>(Note: you will never see this in the actual game. It's secret after all!)</i><br>
+Guess: Blue - Yellow - Green - Orange<br><br>
+<div>
+    <img src="../img/diagram.png">
+</div>
+<div>
+    <div class="pin Gray"></div>
+    <div class="pin Gray"></div>
+    <div class="pin Black"></div>
+    Right Color, Wrong Spot: 2
+    <br>
+    Right Color, Right spot: 1
+</div>
+<br><br>
+Here we got one exact match - the yellow peg in spot 2. We also got two colors that are correct, but in the wrong spot
+(Green and Blue). The computer would show 2 gray pins and 1 black pin - pretty good for our first guess! Then we'd make
+another guess, and receive more feedback, and so on until we either run out of guesses (10 by default) or correctly
+guess the pattern. Note that the order of the pins does not correspond to anything; it's just the number of pegs that
+matters. <br><br>
+Good luck!<br>
+<a href="/">Return to Game</a>
+</body>
+</html>
