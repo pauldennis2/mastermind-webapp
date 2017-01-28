@@ -17,7 +17,7 @@
 {{! changing the mustache delimiter so it doesn't conflict with  }}
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
-<a href = /config>Config</a> | <a href = /help>Help</a> | Version 0.0.2<br>
+<a href = /config>Config</a> | <a href = /help>Help</a> | Version 0.0.3<br>
 Number of Guesses Allowed: {{settings.numGuesses}}<br>
 Number of Colors Possible: {{settings.numColors}}<br>
 Duples Allowed: {{settings.duplesAllowed}}<br>
@@ -27,12 +27,12 @@ Board Width: {{settings.boardWidth}}<br>
 
 <div>
     Menu:<br>
-    <div class="peg Red" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
-    <div class="peg Orange" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
-    <div class="peg Yellow" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
-    <div class="peg Green" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
-    <div class="peg Blue" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
-    <div class="peg Purple" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div id = "red_menu" class="peg Red" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div id = "orange_menu" class="peg Orange" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div id = "yellow_menu" class="peg Yellow" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div id = "green_menu" class="peg Green" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div id = "blue_menu" class="peg Blue" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
+    <div id = "purple_menu" class="peg Purple" data-drag="true" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"></div>
 </div>
 <br>
 <br>

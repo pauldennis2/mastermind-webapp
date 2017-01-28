@@ -59,3 +59,17 @@
 .Black {
     background-color: black;
 }
+
+.YellowDisable {
+    background-color: lemonchiffon;
+}
+.GreenDisable {
+    background-color: palegreen;
+}
+.BlueDisable {
+    background-color: powderblue;
+}
+
+.PurpleDisable {
+    background-color: thistle;
+}
