@@ -70,7 +70,6 @@ angular.module('TIYAngularApp', ['ngDragDrop', 'ui.bootstrap'])
             var emptyFlag = false;
 
             for (i = 0; i < $scope.settings.boardWidth; i++) {
-                var cName = ;
                 if (document.getElementById("blank" + i).className.substr(4) == "blank ui-droppable") {
                     emptyFlag = true;
                 }
