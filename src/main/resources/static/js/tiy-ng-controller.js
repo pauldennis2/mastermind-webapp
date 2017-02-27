@@ -41,7 +41,6 @@ angular.module('TIYAngularApp', ['ngDragDrop', 'ui.bootstrap'])
                         }
 
                         for (i = 0; i < $scope.settings.boardWidth; i++) {
-                            console.log("index = " + i);
                             $scope.testArray[i] = i;
                             $scope.dynamicBlanks[i] = i;
                         }

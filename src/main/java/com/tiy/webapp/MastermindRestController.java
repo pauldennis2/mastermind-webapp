@@ -15,11 +15,6 @@ import java.util.Random;
 @RestController
 public class MastermindRestController {
 
-
-    //Board board;
-
-    public static final int ROW_SIZE = 4;
-
     @RequestMapping(path="/board.json", method = RequestMethod.GET)
     public List<CodeRow> getBoardJson (HttpSession session) {
         Board board = (Board) session.getAttribute("board");

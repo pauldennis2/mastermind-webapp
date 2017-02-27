@@ -36,3 +36,5 @@ Extensions:
 * Login/scoring with a database. The app will ask users to log in, give the user the ability to save a game and return
 to it later. Leaderboards and "ranked" games could be a part of this.
 * Implement an algorithm to solve the board in 5 moves (see Donald Knuth's algorithm described on the Wikipedia page)
+  * As a step towards this, develop a function that calculates the number of possibilities remaining and shows this in
+  a progress bar. (Each guess will presumably remove some possibilities, and the progress bar will fill up)
